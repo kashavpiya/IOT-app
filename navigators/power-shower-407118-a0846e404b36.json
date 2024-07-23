@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "power-shower-407118",
+  "private_key_id": "a0846e404b36c708e89dd43eb68ae10ea575ce42",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDN7he0e2rMf4Pd\nn+SgFLcnbUETnPZCz3t1t/mPN8ytFauJJAsFg7joWVc/nDMFvYOwazHyo29EUE6l\nG6hqEs0Gebfp9LOO4Tq8S1BAs/YY6apGmrJzJz/Qc9TYcIeb4m/VV1yoUkMQG8Xm\n+xN84Y+Tpr/oJ9twubEYWDgyNqQqkbpKGmLfl2Ekjv/61HKq8H6MAi68wrClgdjC\n3o0xJ3Q0hJSH2h5y2rLgvZGZ/rrGMMku2QOPzywohDeqPmq5LbL7OQFrdVVybmUO\nCikq/AQVuCxX8weGNjlTexJMg3YqrdqGt1KJ+CxYxnML+VeDMLiRiDS0k2rptyNj\nBcRgnzUDAgMBAAECggEAA8eyEbMOQ9C3Z/MObE3VCtk7j5ObBaDvYDrPTuy0Sh0S\nuAK8XQ6M717sdhN08E8JQszE7vJHEZbzyp4WWlQcBVloodfHEAFcZaZwQ6/J/a0U\nXhVq3yhCSJ5Hsu1l39upN95RqhlQd9Q6rsG/GtS9IPW3ohhRM+GEubCs32cXXlyj\n/MQev9U1iGqOK3yWwDTJ4eVh5M8vYU7oj7Eh2QBtjah0g0O6Vn4VBSbqVrH/XgYX\nGCEKFkiU0fh7z7JN1N6/lMXERLPh58SmojaIHUR0iHDlzQaUH+wQMLveymVAuQ0c\njrJVoLnTeImAco2QGriOrUn7O/5s5ZtlGKOaAiliuQKBgQD4+4qp09t1psZNcC3+\n5CkOAWZ44CEwM2bjwjDiyyrG88EAMsbp5pfQD+KIel/aaxejqtH19CVcvEr6IDnC\noZDbIPu6n/quPPhi7F+jJxnOlIsBt0QW1qummiFbMEkRebb2MICT6jLZDbeGZ9N9\n4QE3QuAd+MRUTLFvtuRli1okrwKBgQDTu+seIvAw8b3uwWQ4ctIPkjZ2MYWVnvHq\nBaNWGb7YpWrOD6aMY1BlbRDFHCTti4UC/skU/MVzzPvJhinI05sLc87S7liwOIjc\ntRosrm3ZYjqFgpj9WOQjeNvWjF16+IA7adCH69tqMs4F8/I2WsGdbgLX9mbWxB2Z\nRx0wfiZx7QKBgGvF9i+s1MIIfq3mcQJ0IJE/aevImJUUquTLmf2Rk+KqgFBlqlR0\nzCHzvkr1LaiN0p21w0yDcejCWHIMoPPum5U+obgWp5vkKGApkPw+YJ1bDxCfE4oP\nQh3LecTPEdHOrbPDKuTb60ao+VfkeVdzneMdv4U5uUIEMIn60MJjn5FhAoGAYucz\nw6cEVYiGdQFnJCsWTmm5AOrPAH33eJ5blrt990sFoe2TmZ5GjqosnDYyVbfHUQfc\nu+36+cW1k4QU/pdBpE7bPJJTYTV3UMlTya1M6K9GsNi5SBZ+sscgwY5dmDR+CcK6\nwtL8chX7QLKb4KHyMOyTbXfOv+FqBhA+5Uj4Al0CgYBmg5ya28QaGnc/SKclemHb\n9BDEAPwBaao28IwtSXhy7Xod03ll+NEfdklOX6vHFsqyCwvEopO4XIk7MGDn3FVx\nNq6ZdW+6OUkLtsFhs0I3XiDou7CHHJOv6F2WcBP4Hm3d3IdWBHj2luJKKLcA/QKl\n4vuVbXWUuR6D/qXOR/ygyg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "powershower@power-shower-407118.iam.gserviceaccount.com",
+  "client_id": "103035262732122716401",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/powershower%40power-shower-407118.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

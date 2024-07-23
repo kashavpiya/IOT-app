@@ -1,0 +1,57 @@
+{
+  "expo": {
+    "name": "Power Shower",
+    "slug": "powershower",
+    "version": "2.1.1",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "notification": {
+      "icon": "./assets/icon.png"
+    },
+    "userInterfaceStyle": "light",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.powershower.powershower",
+      "entitlements": {
+        "com.apple.developer.networking.wifi-info": true
+      },
+      "buildNumber": "1"
+    },
+    "android": {
+      "useNextNotificationsApi": true,
+      "icon": "./assets/icon.png",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": [
+        "android.permissions.ACCESS_FINE_LOCATION", "NOTIFICATIONS", "ACCESS_WIFI_STATE",
+        "CHANGE_WIFI_STATE"
+      ],
+      "package": "com.powershower.powershower",
+      "versionCode": 44
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "635f8fcc-6cef-4862-86fa-31b71be5ad0f"
+      }
+    },
+    "plugins": [
+      [
+        "react-native-wifi-reborn",
+        {
+          "fineLocationPermission": true
+        }
+      ],
+      "expo-router"
+    ],
+    "scheme": "powershower",
+    "owner": "powershowerteam"
+  }
+}
