@@ -2,7 +2,7 @@
   "expo": {
     "name": "Power Shower",
     "slug": "powershower",
-    "version": "2.1.1",
+    "version": "2.1.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "notification": {
@@ -28,11 +28,12 @@
         "backgroundColor": "#ffffff"
       },
       "permissions": [
-        "android.permissions.ACCESS_FINE_LOCATION", "NOTIFICATIONS", "ACCESS_WIFI_STATE",
+        "android.permission.ACCESS_FINE_LOCATION", "NOTIFICATIONS", "ACCESS_WIFI_STATE",
         "CHANGE_WIFI_STATE"
       ],
       "package": "com.powershower.powershower",
-      "versionCode": 44
+      "versionCode": 45,
+      "targetSdkVersion": 34
     },
     "web": {
       "favicon": "./assets/favicon.png"
