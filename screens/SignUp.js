@@ -1,4 +1,4 @@
-import { React, useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   View,
   Image,
@@ -15,18 +15,15 @@ import {
   MD3DarkTheme,
   Portal,
   Modal,
+  Snackbar
 } from 'react-native-paper';
-import { Snackbar } from 'react-native-paper';
 import { useLinkTo } from '@react-navigation/native';
 import { width, height } from 'react-native-dimension';
-import axios from 'axios';
 import Checkbox from 'expo-checkbox';
-import { ELECTRIC_BLUE } from '../shared/Constant';
-import logo from '../assets/logo.png';
-import RadialGradientBackground from '../components/GradientBackground';
-import { AuthContext } from '../states/auth/AuthContext';
 import { RFValue } from 'react-native-responsive-fontsize';
-
+import { AuthContext } from '../states/auth/AuthContext';
+import logo from '../assets/logo.png';
+import { ELECTRIC_BLUE } from '../shared/Constant';
 const SignUp = ({ navigation }) => {
   const linkTo = useLinkTo();
   const { register } = useContext(AuthContext);

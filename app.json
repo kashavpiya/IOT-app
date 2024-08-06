@@ -2,7 +2,7 @@
   "expo": {
     "name": "Power Shower",
     "slug": "powershower",
-    "version": "2.2.1",
+    "version": "2.2.4",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "notification": {
@@ -34,7 +34,7 @@
         "CHANGE_WIFI_STATE"
       ],
       "package": "com.powershower.powershower",
-      "versionCode": 48
+      "versionCode": 53
     },
     "web": {
       "favicon": "./assets/favicon.png"

@@ -70,7 +70,7 @@ const NewSavings = () => {
             radius={120}
             duration={0}
             progressValueColor={'white'}
-            progressValueStyle={{ fontSize: 64 }}
+            progressValueStyle={{ fontSize: 54 }}
             activeStrokeColor={'#3DEE00'}
             maxValue={showers}
             title={'TOTAL SHOWERS'}

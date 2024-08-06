@@ -7,8 +7,6 @@ import AuthProvider from './states/auth/AuthProvider';
 import MainNavigator from './navigators/MainNavigator';
 import { isFirstLaunch, setFirstLaunch } from './states/storage/storage';
 import * as Notifications from 'expo-notifications';
-import * as TaskManager from 'expo-task-manager';
-import * as BackgroundFetch from 'expo-background-fetch';
 import {
   Text, TextInput
 } from 'react-native';
@@ -22,26 +20,25 @@ const App = () => {
     SofiaSans_400Regular,
   });
 
-      // Override Text scaling
-    if (Text.defaultProps) {
-      Text.defaultProps.allowFontScaling = false;
-    } else {
-      Text.defaultProps = {};
-      Text.defaultProps.allowFontScaling = false;
-    }
+  // Override Text scaling
+  if (Text.defaultProps) {
+    Text.defaultProps.allowFontScaling = false;
+  } else {
+    Text.defaultProps = {};
+    Text.defaultProps.allowFontScaling = false;
+  }
 
-    // Override Text scaling in input fields
-    if (TextInput.defaultProps) {
-      TextInput.defaultProps.allowFontScaling = false;
-    } else {
-      TextInput.defaultProps = {};
-      TextInput.defaultProps.allowFontScaling = false;
-    }
+  // Override Text scaling in input fields
+  if (TextInput.defaultProps) {
+    TextInput.defaultProps.allowFontScaling = false;
+  } else {
+    TextInput.defaultProps = {};
+    TextInput.defaultProps.allowFontScaling = false;
+  }
 
   useEffect(() => {
     const initializeApp = async () => {
       const firstLaunch = await isFirstLaunch();
-      
       if (firstLaunch) {
         await setFirstLaunch();
       }
@@ -53,7 +50,12 @@ const App = () => {
     Notifications.requestPermissionsAsync();
 
     // Handle incoming notifications
-    Notifications.addNotificationReceivedListener(handleNotification);
+    const subscription = Notifications.addNotificationReceivedListener(handleNotification);
+
+    // Cleanup subscription on unmount
+    return () => {
+      subscription.remove();
+    };
   }, []);
 
   const handleNotification = (notification) => {
@@ -63,15 +65,17 @@ const App = () => {
     } catch (error) {
       console.error("Error handling notification:", error);
     }
-
-    
   };
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     <AuthProvider>
       <PaperProvider>
         <NavigationContainer>
-          <MainNavigator/>
+          <MainNavigator />
         </NavigationContainer>
       </PaperProvider>
     </AuthProvider>

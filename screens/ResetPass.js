@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform, ScrollView  } from 'react-native';
 import { PaperProvider, Snackbar } from 'react-native-paper';
 import { height, width } from 'react-native-dimension';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -32,7 +32,11 @@ const ResetPass = ({ navigation, route }) => {
 
     return (
         <PaperProvider>
-            <View style={styles.container}>
+            <KeyboardAvoidingView
+                style={{ flex: 1 }}
+                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            >
+            <ScrollView style={styles.container}>
                 <View style={styles.navContainer}>
                         <MaterialCommunityIcons
                         name='chevron-left'
@@ -74,7 +78,7 @@ const ResetPass = ({ navigation, route }) => {
                     </TouchableOpacity>
                 </View>
                 
-            </View>
+            </ScrollView>
 
             {msg &&
                 <Snackbar
@@ -85,6 +89,7 @@ const ResetPass = ({ navigation, route }) => {
                     {msg}
                 </Snackbar>
             }
+            </KeyboardAvoidingView>
         </PaperProvider>
     );
 };

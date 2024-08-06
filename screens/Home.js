@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { ScrollView, View, StyleSheet, Text, TouchableOpacity, Platform } from 'react-native';
+import { ScrollView, View, StyleSheet, Text, TouchableOpacity, Platform, Alert } from 'react-native';
 import { Snackbar } from 'react-native-paper';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
@@ -22,7 +22,7 @@ import * as BackgroundFetch from 'expo-background-fetch';
 const BACKGROUND_FETCH_TASK = 'background-fetch-task';
 
 const Home = ({ navigation, route }) => {
-  const { message } = route.params;
+  const { message } = route.params || {};
   const [visible, setVisible] = useState(true);
   const { devices, getStatus } = useContext(DeviceContext);
   const [selectedItem, setSelectedItem] = useState('stats');
@@ -30,37 +30,42 @@ const Home = ({ navigation, route }) => {
   const isItemSelected = (item) => selectedItem === item;
 
   useEffect(() => {
-    // Request permission for push notifications
     requestNotificationPermissions();
-
-    // Handle incoming notifications
     Notifications.addNotificationReceivedListener(handleNotification);
-
-    // Configure background fetch
     configureBackgroundFetch();
   }, []);
 
   const requestNotificationPermissions = async () => {
-    if (Platform.OS === 'android') {
-      // Create a notification channel
-      await Notifications.setNotificationChannelAsync('default', {
-        name: 'default',
-        importance: Notifications.AndroidImportance.MAX,
-      });
-    }
+    try {
+      const existingStatus = await Notifications.getPermissionsAsync();
+      let finalStatus = existingStatus.status;
 
-    const { status } = await Notifications.requestPermissionsAsync();
-    if (status !== 'granted') {
-      console.log('Notification permissions not granted');
+      if (existingStatus.status !== 'granted') {
+        const { status } = await Notifications.requestPermissionsAsync();
+        finalStatus = status;
+      }
+
+      if (finalStatus !== 'granted') {
+        Alert.alert('Notification permissions not granted');
+        return;
+      }
+
+      if (Platform.OS === 'android') {
+        await Notifications.setNotificationChannelAsync('default', {
+          name: 'default',
+          importance: Notifications.AndroidImportance.MAX,
+        });
+      }
+    } catch (error) {
+      console.error('Error requesting notification permissions:', error);
     }
   };
 
   const handleNotification = (notification) => {
     try {
-      // Handle the received notification
       console.log(notification);
     } catch (error) {
-      console.error("Error handling notification:", error);
+      console.error('Error handling notification:', error);
     }
   };
 
@@ -72,48 +77,45 @@ const Home = ({ navigation, route }) => {
         return;
       }
 
-      // Define the task
       TaskManager.defineTask(BACKGROUND_FETCH_TASK, async () => {
         try {
-          // Fetch devices and their status
           for (const device of devices) {
             const status = await getStatus(device.id);
             if (status.payload.status === '3') {
               await Notifications.scheduleNotificationAsync({
                 content: {
-                  title: "Notification",
+                  title: 'Notification',
                   body: `Device ${device.name} is ready!`,
                 },
-                trigger: null, // Immediate notification
+                trigger: null,
               });
             }
             if (status.payload.batt < 15) {
               await Notifications.scheduleNotificationAsync({
                 content: {
-                  title: "Notification",
+                  title: 'Notification',
                   body: `Battery low for ${device.name}`,
                 },
-                trigger: null, // Immediate notification
+                trigger: null,
               });
             }
           }
           return BackgroundFetch.Result.NewData;
         } catch (error) {
-          console.error("Background fetch failed:", error);
+          console.error('Background fetch failed:', error);
           return BackgroundFetch.Result.Failed;
         }
       });
 
-      // Register the task
       await BackgroundFetch.registerTaskAsync(BACKGROUND_FETCH_TASK, {
-        minimumInterval: 10, // 10 seconds, but the system may throttle it
-        stopOnTerminate: false, // Continue after app is killed
-        startOnBoot: true, // Start after device reboot
+        minimumInterval: 10,
+        stopOnTerminate: false,
+        startOnBoot: true,
       });
 
       console.log('Background fetch registered');
     } catch (error) {
-      console.error("Error configuring background fetch:", error);
+      console.error('Error configuring background fetch:', error);
     }
   };
 

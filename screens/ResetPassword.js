@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
 import { PaperProvider, Snackbar } from 'react-native-paper';
 import { height, width } from 'react-native-dimension';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -18,36 +18,45 @@ const ResetPassword = ({ navigation }) => {
 
     return (
         <PaperProvider>
-            <View style={styles.container}>
-                <View style={styles.navContainer}>
-                    <MaterialCommunityIcons
-                        name='chevron-left'
-                        size={24}
-                        color={'white'}
-                        onPress={() => navigation.goBack()}
-                    />
-                </View>
+            <KeyboardAvoidingView
+                style={{ flex: 1 }}
+                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            >
+                <ScrollView contentContainerStyle={styles.scrollViewContent}>
+                    <View style={styles.container}>
+                        <View style={styles.navContainer}>
+                            <MaterialCommunityIcons
+                                name='chevron-left'
+                                size={24}
+                                color={'white'}
+                                onPress={() => navigation.goBack()}
+                            />
+                        </View>
 
-                <View style={styles.bottomContainer}>
-                    <Text style={styles.title}>Reset Password</Text>
-                    <Text style={styles.normalText}>If the username exists, you will receive a verification code in the email the username is linked to.</Text>
-                    <TextInput
-                        placeholder="Enter your username"
-                        value={username}
-                        onChangeText={(text) => setUsername(text)}
-                        style={styles.input}
-                    />
-                    <TouchableOpacity onPress={resetPassword} style={styles.button}>
-                        <Text style={styles.buttonText}>Send Verification Code</Text>
-                    </TouchableOpacity>
-                </View>
-
-            </View>
+                        <View style={styles.bottomContainer}>
+                            <Text style={styles.title}>Reset Password</Text>
+                            <Text style={styles.normalText}>If the username exists, you will receive a verification code in the email the username is linked to.</Text>
+                            <TextInput
+                                placeholder="Enter your username"
+                                value={username}
+                                onChangeText={(text) => setUsername(text)}
+                                style={styles.input}
+                            />
+                            <TouchableOpacity onPress={resetPassword} style={styles.button}>
+                                <Text style={styles.buttonText}>Send Verification Code</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </ScrollView>
+            </KeyboardAvoidingView>
         </PaperProvider>
     );
 };
 
 const styles = StyleSheet.create({
+    scrollViewContent: {
+        flexGrow: 1,
+    },
     container: {
         flex: 1,
         backgroundColor: '#212121',

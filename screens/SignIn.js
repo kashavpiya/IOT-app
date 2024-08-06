@@ -1,4 +1,4 @@
-import { React, useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
   View,
   Image,
@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {
-  PaperProvider,
+  Provider as PaperProvider,
   Text,
   TextInput,
   MD3DarkTheme,
@@ -34,11 +34,10 @@ const SignIn = ({ navigation, route }) => {
   const [visible, setVisible] = useState(true);
   const [msg, setMessage] = useState(message);
 
- /*  const [request, response, promptAsync] = Google.useAuthRequest({
+  /*  const [request, response, promptAsync] = Google.useAuthRequest({
     iosClientId: "715908069437-k7ggc7t4bha9h2eieigm237q7h13o8bl.apps.googleusercontent.com",
     androidClientId: "715908069437-9pkm5mis2cshcir4ld47rm6u4cjon2nh.apps.googleusercontent.com"
   }); */
-  
 
   useEffect(() => {
     setUserName('');
@@ -50,16 +49,15 @@ const SignIn = ({ navigation, route }) => {
     if (userName === '' || password === '') {
       setVisible(true);
       setMessage('User Name and/or Password is required');
-    }
-    else {
+    } else {
       const errorMessage = await login(userName, password);
       if (errorMessage) {
         setVisible(true);
         setMessage(errorMessage);
       }
     }
-  }
-  
+  };
+
   return (
     <PaperProvider theme={MD3DarkTheme}>
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -97,15 +95,14 @@ const SignIn = ({ navigation, route }) => {
               </View>
             </TouchableOpacity>
 
-{/*             <TouchableOpacity onPress={promptAsync}>
+            {/* <TouchableOpacity onPress={promptAsync}>
               <Text style={styles.buttonText}>Log in with Google</Text>
-            </TouchableOpacity>  
-*/}
+            </TouchableOpacity> */}
 
             <TouchableOpacity onPress={() => navigation.navigate('ResetPassword')}>
               <Text style={[styles.buttonText, { textDecorationLine: 'underline', marginBottom: height(2) }]}>Reset Password</Text>
             </TouchableOpacity>
-            
+
             <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
               <Text style={[styles.buttonText, { textDecorationLine: 'underline' }]}>Register</Text>
             </TouchableOpacity>
@@ -125,7 +122,7 @@ const SignIn = ({ navigation, route }) => {
         </Snackbar>
       }
     </PaperProvider>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -157,10 +154,10 @@ const styles = StyleSheet.create({
     fontFamily: 'NunitoSans_400Regular'
   },
   logo: {
-   resizeMode: 'contain',
-   width: width(65),
-   height: height(10),
-   marginTop: height(5),
+    resizeMode: 'contain',
+    width: width(65),
+    height: height(10),
+    marginTop: height(5),
   },
   title: {
     marginTop: height(5),
@@ -194,6 +191,6 @@ const styles = StyleSheet.create({
     color: '#C9C9C9',
     fontFamily: 'NunitoSans_400Regular'
   }
-})
+});
 
 export default SignIn;

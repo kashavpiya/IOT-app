@@ -65,9 +65,9 @@ const StatsSaving = () => {
         console.log('Savings response:', response);
 
         if (response) {
-          const carbonSaving = (response.co2Saved).toFixed(2);
+          const carbonSaving = (response.co2Saved).toFixed(0);
           const waterSaving = (response.waterSaved).toFixed(0);
-          const electricSaving = (response.electricitySaved).toFixed(2);
+          const electricSaving = (response.electricitySaved).toFixed(0);
 
           setCarbonSaving(parseFloat(carbonSaving));
           setWaterSaving(parseFloat(waterSaving));
@@ -91,7 +91,7 @@ const StatsSaving = () => {
             radius={120}
             duration={0}
             progressValueColor={'white'}
-            progressValueStyle={{ fontSize: 64 }}
+            progressValueStyle={{ fontSize: 54 }}
             activeStrokeColor={'#EB3CF2'}
             maxValue={waterSaving}
             title={'GALONS SAVED'}
@@ -253,7 +253,10 @@ const styles = StyleSheet.create({
     fontSize: 37,
     fontFamily: 'SofiaSans_400Regular',
     color: 'white',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    textAlign:'center',
+    alignItems:'center',
+    justifyContent:'center'
   },
   averageTime: {
     borderWidth: 10,
