@@ -52,7 +52,7 @@ const DeleteDeviceDialog = ({ deviceId, deleteDeviceDialog, setDeleteDeviceDialo
       style={{ backgroundColor: 'white' }}
     >
       <Dialog.Title style={{ fontSize: 18 }}>
-        Type "delete" to remove this device
+        Type "Delete" to remove this device
       </Dialog.Title>
       
       <Dialog.Content
